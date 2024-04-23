@@ -13,7 +13,16 @@ def translate(request: Request):
     text = request.query_params.get('text')
     target_lang = request.query_params.get('target')
 
-    return {'result': translator.translate(text, dest=target_lang).text}
+    result = None
+
+    for i in range(10):
+        try:
+            result = translator.translate(text, dest=target_lang).text
+            break
+        except:
+            print('EXCEPTION!!! retrying...', text, target_lang)
+
+    return {'result': result}
 
 
 if __name__ == "__main__":
