@@ -12,7 +12,7 @@ def translate(request: Request):
     text = request.query_params.get('text')
     target_lang = request.query_params.get('target')
 
-    return translator.translate(text, dest=target_lang).text
+    return {'result': translator.translate(text, dest=target_lang).text}
 
 
 # if __name__ == "__main__":
