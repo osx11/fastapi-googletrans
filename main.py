@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 from googletrans import Translator
 
@@ -15,5 +16,5 @@ def translate(request: Request):
     return {'result': translator.translate(text, dest=target_lang).text}
 
 
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="127.0.0.1", port=5000, log_level="info")
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", log_level="info")
